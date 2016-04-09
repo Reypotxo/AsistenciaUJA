@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.uja.telematica"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-feature android:name="android.hardware.nfc" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <uses-permission android:name="android.permission.INTERNET" />
+
+        <activity
+            android:name=".GUI.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GUI.NuevoGrupoPracticas"
+            android:label="@string/title_activity_nuevo_grupo_practicas"
+            android:parentActivityName=".GUI.AsignaturasActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.uja.telematica.GUI.AsignaturasActivity" />
+        </activity>
+        <activity
+            android:name=".GUI.AsignaturasActivity"
+            android:label="@string/title_activity_asignaturas"
+            android:parentActivityName=".GUI.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.uja.telematica.GUI.MainActivity" />
+        </activity>
+        <activity
+            android:name=".GUI.AlumnosGrupoActivity"
+            android:label="@string/title_activity_alumnos_grupo"
+            android:parentActivityName=".GUI.AsignaturasActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.uja.telematica.GUI.AsignaturasActivity" />
+        </activity>
+        <activity
+            android:name=".GUI.CrearSesionActivity"
+            android:label="@string/title_activity_crear_sesion"
+            android:parentActivityName=".GUI.SesionesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.uja.telematica.GUI.SesionesActivity" />
+        </activity>
+        <activity
+            android:name=".GUI.SesionesActivity"
+            android:label="@string/title_activity_sesiones"
+            android:parentActivityName=".GUI.AsignaturasActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.uja.telematica.GUI.AsignaturasActivity" />
+        </activity>
+        <activity
+            android:name=".GUI.AlumnosSesionActivity"
+            android:label="@string/title_activity_alumnos_sesion"
+            android:parentActivityName=".GUI.SesionesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.uja.telematica.GUI.SesionesActivity" />
+            <intent-filter>
+                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

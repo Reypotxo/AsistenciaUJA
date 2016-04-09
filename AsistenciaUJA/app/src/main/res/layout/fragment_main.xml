@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:onClick="OnButtonAceptarLoginClick"
+	android:paddingBottom="@dimen/activity_vertical_margin"
+	android:paddingLeft="@dimen/activity_horizontal_margin"
+	android:paddingRight="@dimen/activity_horizontal_margin"
+	android:paddingTop="@dimen/activity_vertical_margin"
+	tools:context="com.uja.telematica.GUI.MainActivity$PlaceholderFragment"
+	android:focusable="false"
+	android:focusableInTouchMode="false">
+
+	<TextView
+		android:id="@+id/textViewTitle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/login"
+		android:textAppearance="@android:style/TextAppearance.Large" />
+
+	<TextView
+		android:id="@+id/textViewUsuarioLogin"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/textViewTitle"
+		android:layout_below="@+id/textViewTitle"
+		android:layout_marginTop="27dp"
+		android:text="@string/nombreUsuarioLogin" />
+
+	<TextView
+		android:id="@+id/textViewClaveLogin"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/editTextUsuarioLogin"
+		android:layout_below="@+id/editTextUsuarioLogin"
+		android:layout_marginTop="14dp"
+		android:text="@string/claveLogin" />
+
+	<EditText
+		android:id="@+id/editTextUsuarioLogin"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/textViewUsuarioLogin"
+		android:layout_below="@+id/textViewUsuarioLogin"
+		android:layout_marginTop="18dp"
+		android:ems="10"
+		android:hint="@string/nombreUsuarioLogin"
+		android:inputType="textPersonName"
+		android:focusableInTouchMode="true"
+		android:focusable="true"
+		android:enabled="true"
+		android:editable="true"
+		android:clickable="true" />
+
+	<EditText
+		android:id="@+id/editTextClaveLogin"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/textViewClaveLogin"
+		android:layout_below="@+id/textViewClaveLogin"
+		android:layout_marginTop="18dp"
+		android:ems="10"
+		android:hint="@string/claveUsuarioLoginPista"
+		android:inputType="textPassword"
+		android:editable="true"
+		android:focusable="true"
+		android:enabled="true"
+		android:clickable="true"
+		android:focusableInTouchMode="true">
+
+	</EditText>
+
+	<Button
+		android:id="@+id/buttonAceptarLogin"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"
+		android:layout_marginBottom="32dp"
+		android:onClick="OnButtonAceptarLoginClick"
+		android:text="@string/aceptar" />
+
+</RelativeLayout>

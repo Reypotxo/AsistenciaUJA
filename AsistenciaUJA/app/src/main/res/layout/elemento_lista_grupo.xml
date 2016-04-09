@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:id="@+id/fotoImageView"
+            android:clickable="false"
+            android:src="@drawable/no_photo_xsmall"
+            android:contentDescription="@string/fotoContentDescription"
+            android:layout_weight="0" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView android:id="@+id/nombreAlumnoTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:singleLine="true"
+                android:text="@string/ejemplo"
+                android:layout_weight="1" />
+
+            <TextView android:id="@+id/grupoAlumnoTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/ejemplo"
+                android:gravity="center"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/alumnoGrupoCheckBox"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</RelativeLayout>

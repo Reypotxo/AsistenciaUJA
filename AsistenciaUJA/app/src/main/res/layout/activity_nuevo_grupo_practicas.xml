@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.uja.telematica.GUI.NuevoGrupoPracticas"
+    android:id="@+id/crearGrupoLayout">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/crearGrupo"
+            android:id="@+id/crearGrupoTextView"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/grupoId"
+            android:id="@+id/grupoIdTextView"
+            android:editable="false"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/grupoIdEditText"
+            android:hint="@string/ejemplo"
+            android:layout_alignBaseline="@+id/grupoDescripcionEditText"
+            android:layout_alignBottom="@+id/grupoDescripcionEditText"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:nestedScrollingEnabled="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/grupoDescripcion"
+            android:id="@+id/grupoDescripcionTextView"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/grupoDescripcionEditText"
+            android:hint="@string/ejemplo"
+            android:layout_alignBaseline="@+id/crearGrupoAceptarButton"
+            android:layout_alignBottom="@+id/crearGrupoAceptarButton"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="2">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dia_semana"
+                    android:id="@+id/diaGrupoTextView" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diaGrupoSpinner" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hora"
+                    android:id="@+id/horaGrupoTextView" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/horaGrupoEditText"
+                    android:editable="false" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/aceptar"
+            android:id="@+id/crearGrupoAceptarButton"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/crearGrupoTextView"
+            android:layout_alignStart="@+id/crearGrupoTextView"
+            android:onClick="OnButtonAceptarCrearGrupoClick" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AsistenciaUJA</string>
+    <string name="login">Login</string>
+    <string name="action_settings">Settings</string>
+    <string name="nombreUsuarioLogin">Usuario</string>
+    <string name="claveLogin">Clave</string>
+    <string name="nombreUsuarioLoginPista">Usuario</string>
+    <string name="claveUsuarioLoginPista">Clave</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="loginCorrecto">Login Correcto</string>
+    <string name="errorBuscarDirAsistencia">No se ha encontrado el directorio asistencia</string>
+    <string name="errorBuscarAsignatura">No se ha encontrado la asignatura</string>
+    <string name="errorCrearDirectoriosApp">No se pudieron crear los directorios necesarios para la aplicacion</string>
+    <string name="title_activity_asignaturas">AsignaturasActivity</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="noAsignaturas">No hay asignaturas validas</string>
+
+    <string name="crearGrupo">Crear Grupo</string>
+    <string name="noGrupos">No hay grupos</string>
+    <string name="grupoId">Identificador de Grupo</string>
+    <string name="grupoDescripcion">Descripcion del Grupo</string>
+
+    <string name="ejemplo">Ejemplo</string>
+    <string name="title_activity_nuevo_grupo_practicas">Crear Grupo Practicas</string>
+
+    <string name="errorIdVacio">Error - El identificador no puede estar vacio</string>
+    <string name="errorIdRepetido">Error - El identificador esta repetido</string>
+    <string name="errorDiaHoraGrupo">Error - Revisar dia/hora</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="editar_grupo">Editar Grupo</string>
+    <string name="ver_alumnos">Ver Alumnos</string>
+    <string name="ver_sesiones">Ver Sesiones</string>
+    <string name="borrar_grupo">Borrar Grupo</string>
+
+    <string name="fotoContentDescription">Foto Alumno</string>
+    <string name="sin_grupo">Sin Grupo</string>
+
+    <string name="title_activity_alumnos_grupo">Alumnos Grupo</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_sesiones">Sesiones</string>
+    <string name="nueva_sesion">Crear Sesion</string>
+    <string name="grupo_sesion">Grupo </string>
+    <string name="sesion_sesion"> - Sesion</string>
+    <string name="sesion_titulo">Sesion</string>
+    <string name="sesion_online">Online</string>
+    <string name="sesion_offline">Offline</string>
+    <string name="editar_sesion">Editar Sesion</string>
+    <string name="ver_sesion">Ver Sesion</string>
+    <string name="subir_sesion">Subir Sesion</string>
+    <string name="borrar_sesion">Borrar Sesion</string>
+    <string name="duracion_sesion">Duracion (minutos)</string>
+    <string name="marcar_bateria_sesiones">Marcar para crear un conjunto de sesiones</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_crear_sesion">Nueva Sesion</string>
+    <string name="fecha_hora_sesion">Introduzca fecha/hora prevista de sesion</string>
+    <string name="fecha">Fecha</string>
+    <string name="semana_fin">Fecha Fin</string>
+    <string name="dia_semana">Dia de la semana</string>
+    <string name="hora">Hora</string>
+    <string name="errorSesionRepetida">Error - La sesion ya existe</string>
+    <string name="errorFicheroSesion">Error - No se pudo crear el fichero de sesion</string>
+    <string name="errorFechaHoraSesion">Error - Fecha/Hora de sesion incorrectas</string>
+    <string name="errorFechaFinSesion">Error - Fecha fin de sesion no valida</string>
+    <string name="warningFechaHoraSesionRepetidas">Warning - Las sesiones repetidas no se crean</string>
+    <string name="errorSesionBBDD">Error - No se pudo crear la sesion en la base de datos</string>
+    <string name="title_activity_alumnos_sesion">Alumnos Sesion</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="WarningSubirSesion">Esta operacion es irreversible y la sesion quedara cerrada. ¿Desea continuar?</string>
+    <string name="ErrorSesionSubida">La sesion ya ha sido subida - Operacion rechazada</string>
+    <string name="ErrorGrupoSesionSubida">Una sesion ya ha sido subida - Operacion rechazada</string>
+    <string name="ErrorBorrado">Error de borrado. Comprobar si los archivos estan en uso</string>
+    <string name="WarningBorrar">Esta operacion es irreversible y los datos quedaran eliminados definitivamente. ¿Desea continuar?</string>
+
+    <string name="FicheroSesionesGlobal">AsistenciaPracticas</string>
+
+    <string name="NoNfc">El dispositivo no cuenta con tecnología NFC habilitada</string>
+    <string name="MsgInicioNfc">Iniciando NFC...</string>
+    <string name="entrada">Entrada</string>
+    <string name="salida">Salida</string>
+
+    <string-array name="dias_practicas">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miercoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+    </string-array>
+
+
+</resources>
