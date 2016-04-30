@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="84dp"
+                android:layout_height="90dp"
+                android:id="@+id/imageView"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="Escudo Ujaen"
+                android:src="@drawable/ujaencolor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UNIVERSIDAD DE JAÉN"
+                android:id="@+id/textView"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ESCUELA POLITÉCNICA SUPERIOR DE LINARES"
+                android:id="@+id/textView2"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Departamento de Ingeniería de Telecomunicación"
+                android:id="@+id/textView4"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/abc_text_size_small_material" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Área de Ingeniería Telemática"
+                android:id="@+id/textView5"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="italic"
+                android:textSize="@dimen/abc_text_size_small_material" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView6"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CURSO ACADÉMICO 2015-2016"
+                android:id="@+id/textView7"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/abc_text_size_small_material" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PROYECTO FIN DE CARRERA"
+                android:id="@+id/textView9"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView10"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sistema de control de asistencia de alumnos a través de tarjeta personal NFC para terminales Android como dispositivo de control de acceso"
+                android:id="@+id/textView11"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView19"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView12"
+                android:layout_gravity="center_horizontal" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TITULACIÓN: "
+                        android:id="@+id/textView13"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/abc_text_size_small_material" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Grado en Ingeniería Telemática."
+                        android:id="@+id/textView14"
+                        android:textSize="@dimen/abc_text_size_small_material" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AUTOR: "
+                        android:id="@+id/textView15"
+                        android:textStyle="bold"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/abc_text_size_small_material" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alfonso Troyano Montes."
+                        android:id="@+id/textView16"
+                        android:textSize="@dimen/abc_text_size_small_material" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TUTOR"
+                        android:id="@+id/textView17"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Juan Carlos Cuevas Martínez."
+                        android:id="@+id/textView18"
+                        android:textSize="@dimen/abc_text_size_small_material" />
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView21"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Linares, Junio de 2016"
+                android:id="@+id/textView20"
+                android:layout_gravity="right|center_horizontal"
+                android:textSize="@dimen/abc_text_size_small_material" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

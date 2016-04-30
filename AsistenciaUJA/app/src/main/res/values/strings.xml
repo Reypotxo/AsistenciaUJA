@@ -90,6 +90,11 @@
     <string name="entrada">Entrada</string>
     <string name="salida">Salida</string>
 
+    <string name="ayuda">Ayuda</string>
+    <string name="ResetBBDD">Resetear datos</string>
+    <string name="about">Acerca De</string>
+    <string name="escudo_ujaen">Escudo Ujaen</string>
+
     <string-array name="dias_practicas">
         <item>Lunes</item>
         <item>Martes</item>

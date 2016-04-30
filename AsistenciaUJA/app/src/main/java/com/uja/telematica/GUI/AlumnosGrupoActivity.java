@@ -1,5 +1,6 @@
 package com.uja.telematica.GUI;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ExpandableListView;
@@ -37,7 +39,7 @@ public class AlumnosGrupoActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         baseDatos = Comunicador.getBaseDatos();
-        alumnos = new ArrayList<Alumno>(baseDatos.alumnos.values());
+        alumnos = new ArrayList<Alumno>();
         setContentView(R.layout.activity_alumnos_grupo);
         alumnosGrupoListView = (ListView)findViewById(R.id.alumnosGrupoListView);
         //alumnosGrupoListView.setOnItemClickListener(this);
@@ -48,6 +50,7 @@ public class AlumnosGrupoActivity extends ActionBarActivity {
             if(alumnoAsignaturaGrupo.getIdAsignatura() == Comunicador.getAsignaturaSeleccionada())
             {
                 alumnosAsignaturaGrupoSeleccionados.add(alumnoAsignaturaGrupo);
+                alumnos.add(baseDatos.alumnos.get(Integer.toString(alumnoAsignaturaGrupo.getIdAlumno())));
             }
         }
     }
@@ -67,13 +70,33 @@ public class AlumnosGrupoActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        if(id == android.R.id.home)
+        switch(id)
         {
-            onBackPressed();
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            case R.id.action_ayuda:
+
+                View ayudaView = getLayoutInflater().inflate(R.layout.ayuda, null, false);
+
+                WebView webView = (WebView)ayudaView.findViewById(R.id.webViewTexto);
+
+                try
+                {
+                    webView.loadUrl("file:///android_asset/AyudaAlumnosGrupo.htm");
+                }
+                catch (Exception ex)
+                {
+                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG);
+                }
+
+                AlertDialog.Builder ayudaBuilder = new AlertDialog.Builder(this);
+                ayudaBuilder.setIcon(R.mipmap.icono_launcher);
+                ayudaBuilder.setTitle(R.string.ayuda);
+                ayudaBuilder.setView(ayudaView);
+                ayudaBuilder.create();
+                ayudaBuilder.show();
+                break;
         }
 
         return super.onOptionsItemSelected(item);

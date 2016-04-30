@@ -1,6 +1,9 @@
 package com.uja.telematica.GUI;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -13,16 +16,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.webkit.WebView;
 import android.widget.ExpandableListView;
+import android.widget.Switch;
+import android.widget.Toast;
 
+import com.uja.telematica.BO.AsyncTasker;
 import com.uja.telematica.BO.GrupoPracticasAdapter;
 import com.uja.telematica.DAO.AlumnoAsignaturaGrupo;
 import com.uja.telematica.DAO.Asignatura;
 import com.uja.telematica.DAO.BaseDatos;
 import com.uja.telematica.DAO.Comunicador;
+import com.uja.telematica.DAO.GenericTypes;
 import com.uja.telematica.DAO.GrupoPracticas;
+import com.uja.telematica.DAO.Ilias;
+import com.uja.telematica.DAO.SesionPracticas;
 import com.uja.telematica.R;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class AsignaturasActivity extends ActionBarActivity
@@ -109,12 +120,80 @@ public class AsignaturasActivity extends ActionBarActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id)
+        {
+            case R.id.action_reset:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this.getWindow().getContext());   //Se coge el contexto de la ventana actual
+                builder = builder.setMessage(getString(R.string.WarningBorrar));
+                builder = builder.setPositiveButton(getString(R.string.si), resetClickListener);
+                builder = builder.setNegativeButton(getString(R.string.no), resetClickListener);
+                try
+                {
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                    //El proceso continua en el click listener
+                }
+                catch (Exception x)
+                {
+                    Toast.makeText(this, x.getMessage(), Toast.LENGTH_LONG);
+                }
+                break;
+            case R.id.action_ayuda:
+
+                View ayudaView = getLayoutInflater().inflate(R.layout.ayuda, null, false);
+
+                WebView webView = (WebView)ayudaView.findViewById(R.id.webViewTexto);
+
+                try
+                {
+                    webView.loadUrl("file:///android_asset/AyudaAsignaturas.htm");
+                }
+                catch (Exception ex)
+                {
+                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG);
+                }
+
+                AlertDialog.Builder ayudaBuilder = new AlertDialog.Builder(this);
+                ayudaBuilder.setIcon(R.mipmap.icono_launcher);
+                ayudaBuilder.setTitle(R.string.ayuda);
+                ayudaBuilder.setView(ayudaView);
+                ayudaBuilder.create();
+                ayudaBuilder.show();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    void DeleteRecursive(File fileOrDirectory) {
+
+        if (fileOrDirectory.isDirectory())
+            for (File child : fileOrDirectory.listFiles())
+                DeleteRecursive(child);
+
+        fileOrDirectory.delete();
+
+    }
+
+    DialogInterface.OnClickListener resetClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which){
+                case DialogInterface.BUTTON_POSITIVE:
+
+                    getApplicationContext().deleteDatabase("AsistenciaUJA");
+                    File asistenciaFolder = new File(Comunicador.baseDatosDir);
+                    DeleteRecursive(asistenciaFolder);
+                    finish();
+
+                    break;
+
+                case DialogInterface.BUTTON_NEGATIVE:
+                    //No hacer nada
+                    break;
+            }
+        }
+    };
 
     /**
      * A placeholder fragment containing a simple view.
@@ -128,7 +207,7 @@ public class AsignaturasActivity extends ActionBarActivity
 
         static ArrayList<String> gruposAsignaturaTexto;
         static BaseDatos baseDatos;
-        static int asignaturaSeleccionada;
+        //static int asignaturaSeleccionada;
         static ArrayList<String> opciones;
         static Context appContext;
         static View fragmentView;
@@ -144,7 +223,7 @@ public class AsignaturasActivity extends ActionBarActivity
             fragment.setArguments(args);
 
             baseDatos = Comunicador.getBaseDatos();
-            asignaturaSeleccionada = Comunicador.getAsignaturaSeleccionada();
+            //asignaturaSeleccionada = Comunicador.getAsignaturaSeleccionada();
 
             opciones = new ArrayList<String>();
             opciones.add(context.getString(R.string.editar_grupo));
@@ -171,11 +250,11 @@ public class AsignaturasActivity extends ActionBarActivity
             baseDatos = Comunicador.getBaseDatos();
             baseDatos.CargarGruposPracticas();  //Se cargan aqui, puesto que es donde se van a mostrar y se iran actualizando conforme se creen nuevos
             asignaturas = baseDatos.GetListaAsignaturas();
-            Comunicador.setAsignaturaSeleccionada(Integer.parseInt(baseDatos.GetAsignaturaSeleccionada(asignaturas.get(0)).getIliasId()));  // Por defecto se selecciona la primera asignatura
+            //Comunicador.setAsignaturaSeleccionada(Integer.parseInt(baseDatos.GetAsignaturaSeleccionada(asignaturas.get(0)).getIliasId()));  // Por defecto se selecciona la primera asignatura
             baseDatos.CargarDatosIlliasAsignatura(Integer.toString(Comunicador.getAsignaturaSeleccionada()));
             super.onResume();
 
-            Comunicador.setGruposAsignatura(baseDatos.GetGruposAsignatura(asignaturaSeleccionada));
+            Comunicador.setGruposAsignatura(baseDatos.GetGruposAsignatura(Comunicador.getAsignaturaSeleccionada()));
             gruposAsignaturaTexto = new ArrayList<String>();
             for(Integer grupoAsignatura : Comunicador.getGruposAsignatura())
             {

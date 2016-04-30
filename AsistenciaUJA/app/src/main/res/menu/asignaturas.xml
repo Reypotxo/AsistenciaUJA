@@ -4,6 +4,8 @@
     tools:context="com.uja.telematica.GUI.AsignaturasActivity">
     <item android:id="@+id/crear_grupo" android:title="@string/crearGrupo"
         app:showAsAction="withText|ifRoom" />
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+    <item android:id="@+id/action_reset" android:title="@string/ResetBBDD"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_ayuda" android:title="@string/ayuda"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>

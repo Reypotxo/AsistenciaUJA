@@ -1,5 +1,6 @@
 package com.uja.telematica.GUI;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.support.v7.app.ActionBarActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -107,8 +109,30 @@ public class NuevoGrupoPracticas extends ActionBarActivity implements View.OnCli
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id)
+        {
+            case R.id.action_ayuda:
+
+                View ayudaView = getLayoutInflater().inflate(R.layout.ayuda, null, false);
+
+                WebView webView = (WebView)ayudaView.findViewById(R.id.webViewTexto);
+
+                try
+                {
+                    webView.loadUrl("file:///android_asset/AyudaCrearGrupo.htm");
+                }
+                catch (Exception ex)
+                {
+                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG);
+                }
+
+                AlertDialog.Builder ayudaBuilder = new AlertDialog.Builder(this);
+                ayudaBuilder.setIcon(R.mipmap.icono_launcher);
+                ayudaBuilder.setTitle(R.string.ayuda);
+                ayudaBuilder.setView(ayudaView);
+                ayudaBuilder.create();
+                ayudaBuilder.show();
+                break;
         }
 
         return super.onOptionsItemSelected(item);

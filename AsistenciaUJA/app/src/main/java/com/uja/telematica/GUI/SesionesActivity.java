@@ -1,5 +1,6 @@
 package com.uja.telematica.GUI;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +9,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebView;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.uja.telematica.BO.GrupoPracticasAdapter;
 import com.uja.telematica.BO.SesionPracticasAdapter;
@@ -122,14 +126,40 @@ public class SesionesActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == R.id.crear_sesion) {
-            //Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
-            Intent intentNuevaSesion = new Intent(getApplicationContext(), CrearSesionActivity.class);
-            intentNuevaSesion.putExtra("NUEVASESION", "true");
-            startActivity(intentNuevaSesion);
-            return true;
-        }
+        int id = item.getItemId();
+        switch(id)
+        {
+            case R.id.crear_sesion:
+                //Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+                Intent intentNuevaSesion = new Intent(getApplicationContext(), CrearSesionActivity.class);
+                intentNuevaSesion.putExtra("NUEVASESION", "true");
+                startActivity(intentNuevaSesion);
+                //return true;
+                break;
 
+            case R.id.action_ayuda:
+
+                View ayudaView = getLayoutInflater().inflate(R.layout.ayuda, null, false);
+
+                WebView webView = (WebView)ayudaView.findViewById(R.id.webViewTexto);
+
+                try
+                {
+                    webView.loadUrl("file:///android_asset/AyudaSesiones.htm");
+                }
+                catch (Exception ex)
+                {
+                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG);
+                }
+
+                AlertDialog.Builder ayudaBuilder = new AlertDialog.Builder(this);
+                ayudaBuilder.setIcon(R.mipmap.icono_launcher);
+                ayudaBuilder.setTitle(R.string.ayuda);
+                ayudaBuilder.setView(ayudaView);
+                ayudaBuilder.create();
+                ayudaBuilder.show();
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 }

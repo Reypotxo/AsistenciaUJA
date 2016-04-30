@@ -1,11 +1,15 @@
 package com.uja.telematica.GUI;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.TimeUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -65,6 +69,10 @@ public class CrearSesionActivity extends ActionBarActivity implements View.OnCli
         setContentView(R.layout.activity_crear_sesion);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        InicializarDatos();
+    }
+
+    private void InicializarDatos() {
         fechaEditText = (EditText) findViewById(R.id.fechaSesionEditText);
         horaEditText = (EditText) findViewById(R.id.horaSesionEditText);
         duracionEditText = (EditText) findViewById(R.id.duracionSesionEditText);
@@ -103,7 +111,7 @@ public class CrearSesionActivity extends ActionBarActivity implements View.OnCli
                 fechaSesion = dateFormatter.parse(sesion.getFechaSesion());
                 horaSesion = timeFormatter.parse(sesion.getHoraSesion());
             }
-            catch (java.text.ParseException parseEx)
+            catch (ParseException parseEx)
             {
                 Toast.makeText(CrearSesionActivity.this, R.string.errorFechaHoraSesion, Toast.LENGTH_SHORT).show();
             }
@@ -114,6 +122,13 @@ public class CrearSesionActivity extends ActionBarActivity implements View.OnCli
         }
         bateriaSesionesCheckBox.setOnClickListener(this);
         setDateTimeField();
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        InicializarDatos();
     }
 
     private void setDateTimeField() {
@@ -332,5 +347,49 @@ public class CrearSesionActivity extends ActionBarActivity implements View.OnCli
         {
             fechaFinSesionesDatePickerDialog.show();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_nuevo_grupo_practicas, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        switch(id)
+        {
+            case R.id.action_ayuda:
+
+                View ayudaView = getLayoutInflater().inflate(R.layout.ayuda, null, false);
+
+                WebView webView = (WebView)ayudaView.findViewById(R.id.webViewTexto);
+
+                try
+                {
+                    webView.loadUrl("file:///android_asset/AyudaCrearSesion.htm");
+                }
+                catch (Exception ex)
+                {
+                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG);
+                }
+
+                AlertDialog.Builder ayudaBuilder = new AlertDialog.Builder(this);
+                ayudaBuilder.setIcon(R.mipmap.icono_launcher);
+                ayudaBuilder.setTitle(R.string.ayuda);
+                ayudaBuilder.setView(ayudaView);
+                ayudaBuilder.create();
+                ayudaBuilder.show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

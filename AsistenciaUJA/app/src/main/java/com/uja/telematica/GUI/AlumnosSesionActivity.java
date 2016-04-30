@@ -1,5 +1,6 @@
 package com.uja.telematica.GUI;
 
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.nfc.NdefMessage;
@@ -14,6 +15,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
@@ -66,11 +68,18 @@ public class AlumnosSesionActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         baseDatos = Comunicador.getBaseDatos();
         sesionSeleccionada = baseDatos.sesionesPracticas.get(Integer.toString(Comunicador.getSesionSeleccionada()));
-        alumnos = new ArrayList<Alumno>(baseDatos.alumnos.values());
+        alumnos = new ArrayList<Alumno>();
         setContentView(R.layout.activity_alumnos_grupo);
         alumnosGrupoListView = (ListView)findViewById(R.id.alumnosGrupoListView);
         timeFormatter = new SimpleDateFormat("HH:mm");
-        ficheroSesion = sesionSeleccionada.getFicheroSesion();;
+        ficheroSesion = sesionSeleccionada.getFicheroSesion();
+        for(AlumnoAsignaturaGrupo alumnoAsignaturaGrupo : baseDatos.alumnosAsignaturaGrupo.values())
+        {
+            if(alumnoAsignaturaGrupo.getIdAsignatura() == Comunicador.getAsignaturaSeleccionada())
+            {
+                alumnos.add(baseDatos.alumnos.get(Integer.toString(alumnoAsignaturaGrupo.getIdAlumno())));
+            }
+        }
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
@@ -104,13 +113,33 @@ public class AlumnosSesionActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        if(id == android.R.id.home)
+        switch(id)
         {
-            onBackPressed();
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            case R.id.action_ayuda:
+
+                View ayudaView = getLayoutInflater().inflate(R.layout.ayuda, null, false);
+
+                WebView webView = (WebView)ayudaView.findViewById(R.id.webViewTexto);
+
+                try
+                {
+                    webView.loadUrl("file:///android_asset/AyudaAlumnosSesion.htm");
+                }
+                catch (Exception ex)
+                {
+                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG);
+                }
+
+                AlertDialog.Builder ayudaBuilder = new AlertDialog.Builder(this);
+                ayudaBuilder.setIcon(R.mipmap.icono_launcher);
+                ayudaBuilder.setTitle(R.string.ayuda);
+                ayudaBuilder.setView(ayudaView);
+                ayudaBuilder.create();
+                ayudaBuilder.show();
+                break;
         }
 
         return super.onOptionsItemSelected(item);

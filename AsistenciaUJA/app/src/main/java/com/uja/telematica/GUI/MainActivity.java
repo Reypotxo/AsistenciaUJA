@@ -1,7 +1,10 @@
 package com.uja.telematica.GUI;
 
+import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,6 +34,8 @@ import com.uja.telematica.R;
 import net.danlew.android.joda.JodaTimeAndroid;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -72,9 +78,43 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id)
+        {
+            case R.id.action_about:
+                View aboutView = getLayoutInflater().inflate(R.layout.about, null, false);
+
+                AlertDialog.Builder aboutBuilder = new AlertDialog.Builder(this);
+                aboutBuilder.setIcon(R.mipmap.icono_launcher);
+                aboutBuilder.setTitle(R.string.app_name);
+                aboutBuilder.setView(aboutView);
+                aboutBuilder.create();
+                aboutBuilder.show();
+                break;
+
+            case R.id.action_ayuda:
+
+                View ayudaView = getLayoutInflater().inflate(R.layout.ayuda, null, false);
+
+                WebView webView = (WebView)ayudaView.findViewById(R.id.webViewTexto);
+
+                try
+                {
+                    webView.loadUrl("file:///android_asset/AyudaLogin.htm");
+                }
+                catch (Exception ex)
+                {
+                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG);
+                }
+
+                AlertDialog.Builder ayudaBuilder = new AlertDialog.Builder(this);
+                ayudaBuilder.setIcon(R.mipmap.icono_launcher);
+                ayudaBuilder.setTitle(R.string.ayuda);
+                ayudaBuilder.setView(ayudaView);
+                ayudaBuilder.create();
+                ayudaBuilder.show();
+                break;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
