@@ -28,17 +28,38 @@ import java.util.Collections;
 
 public class SesionesActivity extends ActionBarActivity {
     /**
+     * Manejador de eventos personalizado para solventar cuando la lista no escucha
+     */
+    public interface SesionesListListener {
+        /**
+         * Evento que se lanzara cuando se edite algun registro de la lista
+         */
+        public void onListChanged();
+    }
+    /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    public SesionesListListener listener;
 
     ArrayList opciones;
     BaseDatos baseDatos;
     ArrayList<String> sesionesGrupoTexto;
 
+    public void setCustomObjectListener(SesionesListListener listener) {
+        this.listener = listener;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setCustomObjectListener(new SesionesListListener() {
+            @Override
+            public void onListChanged(){
+                onResume();
+            }
+        });
 
         CargarDatos();
 

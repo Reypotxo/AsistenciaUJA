@@ -119,6 +119,12 @@ public class CrearSesionActivity extends ActionBarActivity implements View.OnCli
             this.setTitle(getString(R.string.editar_sesion));
             TextView nuevaSesionTextView = (TextView) findViewById(R.id.nuevaSesionTextView);
             nuevaSesionTextView.setText(getString(R.string.editar_sesion));
+            bateriaSesionesCheckBox.setEnabled(false);  //No se pueden crear batería de sesiones durante la edicion
+            bateriaSesionesCheckBox.setVisibility(View.INVISIBLE);
+            EditText fechaFinEditText = (EditText) findViewById(R.id.fechaFinSesionEditText);
+            fechaFinEditText.setVisibility(View.INVISIBLE);
+            TextView fechaFinTextView = (TextView) findViewById(R.id.fechaFinTextView);
+            fechaFinTextView.setVisibility(View.INVISIBLE);
         }
         bateriaSesionesCheckBox.setOnClickListener(this);
         setDateTimeField();

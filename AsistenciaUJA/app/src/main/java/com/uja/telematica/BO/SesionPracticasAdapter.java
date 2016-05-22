@@ -27,6 +27,7 @@ import com.uja.telematica.DAO.SesionRegister;
 import com.uja.telematica.GUI.AlumnosGrupoActivity;
 import com.uja.telematica.GUI.AlumnosSesionActivity;
 import com.uja.telematica.GUI.CrearSesionActivity;
+import com.uja.telematica.GUI.SesionesActivity;
 import com.uja.telematica.R;
 
 import java.io.File;
@@ -274,7 +275,7 @@ public class SesionPracticasAdapter extends BaseExpandableListAdapter {
                         Toast.makeText(activity.getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
                     }
 
-
+                    ((SesionesActivity)activity).listener.onListChanged();
                     break;
 
                 case DialogInterface.BUTTON_NEGATIVE:
@@ -328,9 +329,8 @@ public class SesionPracticasAdapter extends BaseExpandableListAdapter {
                     }
                     else
                     {
-                        sesionesGrupoListView.postInvalidate();
+                        ((SesionesActivity)activity).listener.onListChanged();
                     }
-
 
                     break;
 
